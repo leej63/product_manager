@@ -1,0 +1,41 @@
+<div class="create_product p-2 text-center">
+    <h2>Create a New Product</h2>
+    <form (submit)="createAProduct()">
+        <p>{{ newProduct | json }}</p>
+        <label>
+        Title
+        <input
+            type="text"
+            name="title"
+            [(ngModel)]="newProduct.title"
+            #title="ngModel"
+            required
+            minlength="2"
+        >
+        </label><br>
+        <label>
+        Price
+        <input
+            type="text"
+            name="price"
+            [(ngModel)]="newProduct.price"
+            #price="ngModel"
+            required
+        >
+        </label><br>
+        <label>
+        Image URL
+        <input
+            type="text"
+            name="imgUrl"
+            [(ngModel)]="newProduct.imgUrl"
+            #imgUrl="ngModel"
+            required
+        >
+        </label><br>
+        <input *ngIf="title.valid && price.valid" type="submit" value="Create" class="btn btn-success btn-sm mx-2">
+        <button [routerLink]="['/products']" class="btn btn-danger btn-sm mx-2">Cancel</button>
+    </form>
+    <span style="color: red;" *ngIf="!title.valid">The title must be atleast 2 characters.</span><br>
+    <span style="color: red;" *ngIf="!price.valid">Price must be a number; can include decimals.</span>
+</div>

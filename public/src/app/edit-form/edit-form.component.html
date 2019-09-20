@@ -1,0 +1,42 @@
+<div class="edit_product my-3 p-2 text-center">
+  <h2>Edit Product</h2>
+  <form>
+    <p>{{ productToEdit | json }}</p>
+    <label>
+      Title
+      <input
+        type="text"
+        name="productToEdit['title']"
+        [(ngModel)]="productToEdit['title']"
+        #productToEdit.title="ngModel"
+        required
+        minlength="2"
+      >
+    </label><br>
+    <label>
+      Price
+      <input
+        type="text"
+        name="productToEdit.price"
+        [(ngModel)]="productToEdit.price"
+        #productToEdit.price="ngModel"
+        required
+      >
+    </label><br>
+    <label>
+      Image URL
+      <input
+        type="text"
+        name="productToEdit.imgUrl"
+        [(ngModel)]="productToEdit.imgUrl"
+        #productToEdit.imgUrl="ngModel"
+        required
+      >
+    </label><br>
+    <button (click)="editAProduct(productToEdit)" class="btn btn-primary btn-sm mx-2">Update</button>
+    <button (click)="deleteAProduct(productToEdit._id)" class="btn btn-danger btn-sm mx-2">Delete</button>
+  </form>
+  <!-- <span style="color: red;" *ngIf="!title.valid">The title must be atleast 2 characters.</span><br>
+  <span style="color: red;" *ngIf="!price.valid">Price must be a number; can include decimals.</span> -->
+</div>
+

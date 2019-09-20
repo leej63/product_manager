@@ -1,0 +1,13 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<div class="products_list">
+    <h2 class="text-center">Products List</h2>
+    <div *ngFor="let product of allProducts" class="one_product my-3 p-2 text-center border border-dark" style="width: 85%; margin: 0px auto 0px auto;">
+        <img src="{{product.imgUrl}}" alt="a product" class="img-fluid" style="height: 150px;">
+        <p class="my-1">{{ product.title }}</p>
+        <p class="my-1">${{ product.price }}</p>
+        <button [routerLink]="['/products/edit/', product._id]" class="btn btn-primary btn-sm mx-2">Edit</button>
+        <button (click)="deleteAProduct(product._id)" class="btn btn-danger btn-sm mx-2">Delete</button>
+    </div>
+</div>
